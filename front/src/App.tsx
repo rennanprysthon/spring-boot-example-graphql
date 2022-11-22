@@ -1,5 +1,4 @@
 import { useQuery } from "@apollo/client";
-import { useEffect } from "react";
 import AUTHORS from "./querys";
 
 function App() {
@@ -13,19 +12,18 @@ function App() {
     return <p>An error occurred...</p>
   }
 
-  useEffect(() => {
-    console.log(data)
-  }, [])
-
   return (
-    <div>
+    <div className="bg-slate-100 p-14 h-screen">
+      <div>
+        <h1 className="text-4xl font-bold text-indigo-700">Books</h1>
+      </div>
       {
         data?.authors?.map((author) => (
-          <div key={author.id}>
-            <h1>{author.name}</h1>
-            <ul>
+          <div key={author.id} className="p-4">
+            <h1 className="text-slate-700 text-lg font-bold">{author.name}</h1>
+            <ul className="pl-5">
               {author.books.map(book => (
-                <li>{book.title}</li>
+                <li className="text-slate-900 text-sm font-normal">{book.title}</li>
               ))}  
             </ul>
           </div>
